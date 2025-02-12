@@ -1,0 +1,44 @@
+.user {
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+}
+.forms {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    justify-content: flex-end;
+}
+.userButton {
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+    width: 125px;
+    border-radius: 5px;
+}
+.deleteButton {
+    background-color: red;
+    font-weight: bold;
+}
+.updateButton {
+    background-color: var(--btn);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.detail {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.detailTexts {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
