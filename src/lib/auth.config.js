@@ -9,7 +9,7 @@ export const authConfig = {
     callbacks: {
         async jwt({ token, user }) {
             if (user) {
-                // console.log('Session user: ', user)
+                console.log('Session user: ', user)
                 token.name = user.username
                 token.email = user.email
                 token.isAdmin = user.isAdmin
