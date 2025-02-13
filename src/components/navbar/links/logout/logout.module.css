@@ -1,0 +1,49 @@
+.container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+}
+
+.name {
+    font-size: 24px;
+}
+
+.email {
+    font-size: 12px;
+}
+.logout {
+    display: flex;
+    align-items: center;
+}
+
+.button {
+    position: relative;
+    width: 50px;
+    height: 25px;
+    background-color: transparent;
+    border: none;
+}
+
+.icon {
+    cursor: pointer;
+    object-fit: contain;
+}
+.icon:hover {
+    transform: scale(1.5);
+    transition: all 0.2s ease-in-out;
+}
+
+@media (max-width: 768px) { 
+    .container {
+        flex-direction: column;
+    }
+    .info {
+        align-items: center;
+    }
+}

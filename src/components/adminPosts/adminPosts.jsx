@@ -1,8 +1,9 @@
-import { getPosts, getUsers } from '@/lib/data'
 import styles from './adminPosts.module.css'
 import Image from 'next/image'
-import { deletePost } from '@/lib/actions'
 import Link from 'next/link'
+import React from 'react'
+import { getPosts, getUsers } from '../../lib/data'
+import { deletePost } from '@/lib/actions'
 
 export default async function AdminPosts() {
   const posts = await getPosts()
@@ -23,7 +24,7 @@ export default async function AdminPosts() {
                   <Link href={`/blog/${post.slug}`}>
                     <span className={styles.postTitle}>{post.title}</span>
                   </Link>
-                  <span>Author: {user?.username || 'unknown'} <span style={{ color: user.isAdmin ? "green" : 'aqua' }}><i>({user?.isAdmin ? "admin" : 'client'})</i></span></span>
+                  <span>Author: {user?.username || 'unknown'} <span style={{ color: user?.isAdmin ? "green" : 'aqua' }}><i>({user?.isAdmin ? "admin" : 'client'})</i></span></span>
                   <span><i><small>Posted at: {post.createdAt.toString().slice(4, 16)}</small></i></span>
                 </div>
               </div>

@@ -8,6 +8,6 @@ import { usePathname } from 'next/navigation'
 export default function NavLink({ item }) {
     const pathname = usePathname()
     return (
-            <Link href={item.path} className={`${styles.container} ${pathname == item.path && styles.active}`}>{item.title}</Link>
+            <Link href={item.path} onClick={() => setOpen(prev=>!prev)} className={`${styles.container} ${pathname == item.path && styles.active}`}>{item.title}</Link>
     )
 }

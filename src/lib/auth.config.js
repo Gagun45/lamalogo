@@ -1,3 +1,6 @@
+import { NextResponse } from "next/server"
+
+
 export const authConfig = {
     pages: {
         signIn: "/login"
@@ -7,6 +10,7 @@ export const authConfig = {
         async jwt({ token, user }) {
             if (user) {
                 // console.log('Session user: ', user)
+                token.name = user.username
                 token.email = user.email
                 token.isAdmin = user.isAdmin
                 if (user.dbID) {
@@ -19,6 +23,7 @@ export const authConfig = {
             return token
         },
         async session({ session, token }) {
+            session.user.name = token.name
             session.user.email = token.email
             session.user.isAdmin = token.isAdmin
             session.dbID = token.dbID
@@ -28,7 +33,6 @@ export const authConfig = {
         },
         authorized({ auth, request }) {
             // console.log("Session auth: ", auth)
-
             const user = auth?.user
             // console.log(auth?.user)
             const isOnAdminPanel = request.nextUrl?.pathname.startsWith('/admin')
@@ -47,7 +51,7 @@ export const authConfig = {
 
             // ONLY UNAUTHENTICATED CAN REACH THE LOGIN DASHBOARD
             if (isOnLoginPanel && user) {
-                return Response.redirect(new URL('/', request.nextUrl))
+                return NextResponse.redirect(new URL('/', request.nextUrl))
             }
             return true
         }

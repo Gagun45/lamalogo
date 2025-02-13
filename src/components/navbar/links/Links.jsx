@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import styles from './links.module.css'
 import NavLink from './navLink/navLink'
 import Image from 'next/image'
-import { handleLogout } from '@/lib/actions'
+import Logout from './logout/logout'
 
 export default function Links({ session }) {
     const [open, setOpen] = useState(false)
@@ -45,20 +45,22 @@ export default function Links({ session }) {
                             {
                                 session.user?.isAdmin && <NavLink item={{ title: "Admin", path: '/admin' }} />
                             }
-                            <form action={handleLogout}>
-                                <button className={styles.logout}>Logout</button>
-                            </form>
                         </>
                     )
                         : (<NavLink item={{ title: "Login", path: '/login' }} />)
+                }
+                {
+                    session?.user
+                        ? (<Logout user={session.user} />)
+                        : (null)
                 }
             </div>
             <Image src="/menu.png" alt='' width={30} height={30} onClick={() => setOpen(prev => !prev)}
                 className={styles.menuButton} />
             {open &&
-                <div className={styles.mobileLinks}>
+                <div className={styles.mobileLinks} >
                     {links.map(link => (
-                        <NavLink item={link} key={link.title}/>
+                        <NavLink item={link} key={link.title}  />
                     ))}
                     {
                         session?.user ? (
@@ -66,12 +68,14 @@ export default function Links({ session }) {
                                 {
                                     session.user?.isAdmin && <NavLink item={{ title: "Admin", path: '/admin' }} />
                                 }
-                                <form action={handleLogout}>
-                                    <button className={styles.logout}>Logout</button>
-                                </form>
                             </>
                         )
                             : (<NavLink item={{ title: "Login", path: '/login' }} />)
+                    }
+                    {
+                        session?.user
+                            ? (<Logout user={session.user} />)
+                            : (null)
                     }
                 </div>}
         </div>

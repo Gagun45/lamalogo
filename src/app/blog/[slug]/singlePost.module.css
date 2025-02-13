@@ -7,15 +7,15 @@
     position: relative;
     flex: 1;
     height: calc(100vh - 200px);
-    border: 1px solid;
+    min-height: 400px;
 }
 
 .img {
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .textContainer {
-    flex: 2;
+    flex: 1;
     display: flex;
     flex-direction: column;
     gap: 50px;
@@ -50,7 +50,8 @@
 
 
 @media (max-width: 768px) {
-    .imgContainer {
-        display: none;
+    .container {
+        flex-direction: column;
+        gap: 10px;
     }
 }

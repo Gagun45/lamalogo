@@ -10,27 +10,24 @@ export default async function AdminPage() {
   const session = await auth()
   return (
     <div className={styles.container}>
-      <div className={styles.row}>
-        <div className={styles.col}>
-          <Suspense fallback={<div>Loading...</div>}>
-            <AdminPosts />
-          </Suspense>
-        </div>
-        <div className={styles.col}>
-          <AdminPostForm userId={session.dbID} />
-        </div>
+      <div className={`${styles.cell} ${styles.border}`}>
+
+        <Suspense fallback={<div>Loading...</div>}>
+          <AdminPosts />
+        </Suspense>
+      </div>
+      <div className={`${styles.cell}`}>
+        <AdminPostForm userId={session.dbID} />
       </div>
 
-      <div className={styles.row}>
-        <div className={styles.col}>
-          <Suspense fallback={<div>Loading...</div>}>
-            <AdminUsers />
-          </Suspense>
-        </div>
-        <div className={styles.col}>
-          <AdminUserForm />
-        </div>
+      <div className={`${styles.cell} ${styles.border}`}>
+        <Suspense fallback={<div>Loading...</div>}>
+          <AdminUsers />
+        </Suspense>
       </div>
-    </div>
+      <div className={`${styles.cell}`}>
+        <AdminUserForm />
+      </div>
+    </div >
   )
 }

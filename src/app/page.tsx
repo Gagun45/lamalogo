@@ -9,8 +9,12 @@ export default function Homepage() {
         <h1 className={styles.title}>Creative Thoughts Agency.</h1>
         <p className={styles.desc}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, sint. Consequatur dicta omnis quas asperiores rem iusto tempore veritatis architecto perferendis error ad quo voluptas quibusdam quae, accusamus accusantium id.</p>
         <div className={styles.buttons}>
-          <button className={styles.button}>Learn More</button>
-          <button className={styles.button}>Contact</button>
+          <Link href='/about'>
+            <button className={`${styles.button} ${styles.learnMore}`}>Learn More</button>
+          </Link>
+          <Link href='/contact'>
+            <button className={`${styles.button} ${styles.contact}`} >Contact</button>
+          </Link>
         </div>
         <div className={styles.brands}>
           <Link href="/" className={styles.brandContainer}>

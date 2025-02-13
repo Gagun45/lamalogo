@@ -1,6 +1,7 @@
-import PostCard from '@/components/postCard/postCard'
+import PostCard from '../../components/postCard/postCard'
+import { getPosts } from '../../lib/data'
 import styles from './blog.module.css'
-import { getPosts } from '@/lib/data'
+import React from 'react'
 
 // const getData = async () => {
 //   const res = await fetch('https://jsonplaceholder.typicode.com/posts')

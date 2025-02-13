@@ -1,34 +1,18 @@
 .container {
     margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }
 
-.row {
-    display: flex;
-    gap: 100px;
-    margin-bottom: 100px;
+.cell {
+    border: 1px solid white;
+    padding: 10px;
 }
 
-.row h1 {
-    font-size: 24px;
-    font-weight: 300;
-}
-
-.col {
-    flex: 1
-}
-
-.col img {
-    object-fit: cover;
-    border-radius: 50%;
-}
-
-.line {
-    margin: 100px;
-    color: var(--bgSoft);
-}
 
 @media (max-width: 768px) {
-    .row {
-        flex-direction: column;
+    .container {
+        grid-template-columns: repeat(1, 1fr);
+        row-gap: 50px;
     }
 }

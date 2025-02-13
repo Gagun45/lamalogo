@@ -33,10 +33,7 @@ export default async function SinglePost({ params }) {
   return (
     <div className={styles.container}>
       <div className={styles.imgContainer}>
-        {
-          post?.img &&
-          <Image src={post.img} alt='' fill className={styles.img} />
-        }
+        <Image src={post.img || '/noavatar.png'} alt='' fill className={styles.img} />
       </div>
       <div className={styles.textContainer}>
         <h1 className={styles.title}>{post.title}</h1>

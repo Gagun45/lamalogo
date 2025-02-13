@@ -2,7 +2,8 @@
 
 import { useActionState, useEffect, useState } from 'react'
 import styles from './adminUserForm.module.css'
-import { addUser } from '@/lib/actions'
+import React from 'react'
+import { addUser } from '../../lib/actions'
 
 export default function AdminUserForm() {
   const [state, formAction] = useActionState(addUser, undefined)

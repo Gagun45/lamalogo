@@ -37,15 +37,15 @@ export const { handlers: { GET, POST }, signIn, signOut, auth } = NextAuth({
                 connectToDb()
                 const user = await User.findOne({ email: profile.email })
 
-                    if (user) {
-                        return {
-                            isAdmin: user.isAdmin,
-                            dbID: user.id,
-                            email: user.email
-                        }
-                    } else {
-                        return null
+                if (user) {
+                    return {
+                        isAdmin: user.isAdmin,
+                        dbID: user.id,
+                        email: user.email
                     }
+                } else {
+                    return null
+                }
             }
         }),
         CredentialsProvider({
@@ -62,17 +62,16 @@ export const { handlers: { GET, POST }, signIn, signOut, auth } = NextAuth({
         })
     ],
     callbacks: {
-        async signIn({ user, account, profile }) {
-            if (account.provider === 'github') {
-                console.log(user)
+        async signIn({ account, profile }) {
+            if (account?.provider === 'github') {
                 connectToDb()
                 try {
-                    const user = await User.findOne({ email: profile.email })
+                    const user = await User.findOne({ email: profile?.email })
                     if (!user) {
                         const newUser = new User({
-                            username: profile.login,
-                            email: profile.email,
-                            image: profile.avatar_url,
+                            username: profile?.login,
+                            email: profile?.email,
+                            image: profile?.avatar_url,
                             isAdmin: true
                         })
                         await newUser.save()

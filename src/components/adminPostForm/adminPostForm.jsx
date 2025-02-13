@@ -2,7 +2,8 @@
 
 import { useActionState, useEffect, useState } from 'react'
 import styles from './adminPostForm.module.css'
-import { addPost } from '@/lib/actions'
+import React from 'react'
+import { addPost } from '../../lib/actions'
 
 export default function AdminPostForm({ userId }) {
   const [state, formAction] = useActionState(addPost, undefined)
@@ -32,7 +33,7 @@ export default function AdminPostForm({ userId }) {
       <input type='text' placeholder='slug' name='slug' value={slug} onChange={(e) => setSlug(e.target.value)} />
       <input type='text' placeholder='img' name='img' value={img} onChange={(e) => setImg(e.target.value)} />
       <input type='hidden' name='userId' value={userId} />
-      <textarea type='text' placeholder='Description' name='desc' rows={10} value={description} onChange={(e) => setDescription(e.target.value)} />
+      <textarea placeholder='Description' name='desc' rows={10} value={description} onChange={(e) => setDescription(e.target.value)} />
       <button>Add</button>
       {state &&
         <span style={{ color: 'red' }}>{state.error}</span>}

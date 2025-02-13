@@ -16,7 +16,8 @@
 }
 
 
-.mobileLinks, .menuButton {
+.mobileLinks,
+.menuButton {
     display: none;
 }
 
@@ -27,11 +28,13 @@
     }
 
     .mobileLinks {
+        border-left: 15px solid;
+        border-bottom: 15px solid;
         position: absolute;
         top: 100px;
         right: 0;
         width: 50%;
-        height: calc(100vh - 100px);
+        height: auto;
         background-color: var(--bg);
         display: flex;
         flex-direction: column;
@@ -40,6 +43,7 @@
         gap: 10px;
         z-index: 10;
     }
+
     .menuButton {
         display: block;
         cursor: pointer;
