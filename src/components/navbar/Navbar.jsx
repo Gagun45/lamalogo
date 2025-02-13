@@ -11,7 +11,7 @@ export default async function Navbar() {
   return (
     <div className={styles.container}>
       <Link href="/" className={styles.logo}>Logo</Link>
-      <div>
+      <div className={styles.links}>
         <Links session={session} />
       </div>
     </div>

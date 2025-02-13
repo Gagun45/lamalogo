@@ -6,6 +6,7 @@ import { User } from "./models"
 import bcrypt from 'bcrypt'
 import { authConfig } from "./auth.config"
 
+
 const login = async (credentials) => {
     try {
         connectToDb()
@@ -44,7 +45,7 @@ export const { handlers: { GET, POST }, signIn, signOut, auth } = NextAuth({
                         username: profile?.login,
                         email: profile?.email,
                         image: profile?.avatar_url,
-                        isAdmin: true
+                        isAdmin: false
                     })
                     await newUser.save()
                 }
@@ -91,7 +92,7 @@ export const { handlers: { GET, POST }, signIn, signOut, auth } = NextAuth({
                             username: profile?.login,
                             email: profile?.email,
                             image: profile?.avatar_url,
-                            isAdmin: true
+                            isAdmin: false
                         })
                         await newUser.save()
                     }

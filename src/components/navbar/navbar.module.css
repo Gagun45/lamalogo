@@ -8,3 +8,7 @@
     font-size: 30px;
     font-weight: bold;
 }
+.links {
+    display: flex;
+    align-items: center;
+}
