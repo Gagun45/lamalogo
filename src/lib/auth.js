@@ -33,19 +33,19 @@ export const { handlers: { GET, POST }, signIn, signOut, auth } = NextAuth({
         Github({
             clientId: process.env.GITHUB_ID,
             clientSecret: process.env.GITHUB_SECRET,
-            async profile(profile) {
-                const user = await User.findOne({email: profile.email})
+            // async profile(profile) {
+            //     const user = await User.findOne({email: profile.email})
 
-                if (user) {
-                    return {
-                        isAdmin: user.isAdmin,
-                        dbID: user.id,
-                        email: user.email
-                    }
-                } else {
-                    return null
-                }
-            }
+            //     if (user) {
+            //         return {
+            //             isAdmin: user.isAdmin,
+            //             dbID: user.id,
+            //             email: user.email
+            //         }
+            //     } else {
+            //         return null
+            //     }
+            // }
         }),
         CredentialsProvider({
             async authorize(credentials) {
