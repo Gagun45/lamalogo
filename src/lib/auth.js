@@ -36,17 +36,31 @@ export const { handlers: { GET, POST }, signIn, signOut, auth } = NextAuth({
             authorization: { params: { scope: "read:user user:email" } },
             async profile(profile) {
                 connectToDb()
-                const user = await User.findOne({ username: profile.login })
+
+                const user = await User.findOne({ email: profile.email })
+
+                if (!user) {
+                    const newUser = new User({
+                        username: profile?.login,
+                        email: profile?.email,
+                        image: profile?.avatar_url,
+                        isAdmin: true
+                    })
+                    await newUser.save()
+                }
+
+                const ghuser = await User.findOne({ email: profile.email })
 
                 console.log('db user: ', user)
+                console.log('db ghuser: ', ghuser)
                 console.log('db profile: ', profile)
 
-                if (user) {
+                if (ghuser) {
                     return {
-                        isAdmin: user.isAdmin,
-                        dbID: user.id,
-                        username: user.username,
-
+                        isAdmin: ghuser.isAdmin,
+                        dbID: ghuser.id,
+                        username: ghuser.username,
+                        email: ghuser.email
                     }
                 } else {
                     return null
