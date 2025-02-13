@@ -33,6 +33,7 @@ export const { handlers: { GET, POST }, signIn, signOut, auth } = NextAuth({
         Github({
             clientId: process.env.GITHUB_ID,
             clientSecret: process.env.GITHUB_SECRET,
+            authorization: { params: { scope: "read:user user:email" } },
             async profile(profile) {
                 connectToDb()
                 const user = await User.findOne({ email: profile.email })
