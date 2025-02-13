@@ -166,6 +166,25 @@ export const register = async (previousState, formData) => {
     // const newData = {username, password, email, passwordRepeat}
 
     // console.log("newData: ", newData)
+    if (!username) {
+        return { error: 'Username missing' }
+    } else if (username.length < 3) {
+        return { error: 'Username length must be 3 symblos at least' }
+    } else if (username.length > 20) {
+        return { error: 'Username cant be so long (20 symbols max)' }
+    }
+    if (!email) {
+        return { error: 'Email missing' }
+    } else if (email.length > 50) {
+        return { error: "Email cant be so long (50 symbols max)" }
+    }
+
+    if (!password) {
+        return { error: 'Password missing' }
+    } else if (password.length < 6) {
+        return { error: 'Password length must be 6 symbols at least' }
+    }
+
     if (password !== passwordRepeat) return { error: "Passwords dont match" }
 
     try {
