@@ -1,14 +1,32 @@
 .post {
+    position: relative;
     padding: 5px;
     display: flex;
     gap: 5px;
     justify-content: space-between;
     align-items: center;
 }
+.post::after {
+    content: "";
+    position: absolute;
+    background-color: white;
+    width: 80%;
+    height: 1px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
 .forms {
     display: flex;
-    flex-direction: column;
+    justify-content: flex-end;
+    flex: 1;
     gap: 2px;
+}
+.detail {
+    display: flex;
+    flex: 1;
+    gap: 10px;
+    align-items: center;
 }
 .postButton {
     padding: 5px;
@@ -27,14 +45,17 @@
     gap: 5px;
 }
 
-.detail {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
+
 
 .detailTexts {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
+
+/* @media (max-width: 768px) {
+    .container {
+        grid-template-columns: repeat(1, 1fr);
+        row-gap: 50px;
+    }
+} */
