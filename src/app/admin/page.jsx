@@ -6,7 +6,13 @@ import AdminUsers from '@/components/adminUsers/adminUsers'
 import AdminUserForm from '@/components/adminUserForm/adminUserForm'
 import { auth } from '@/lib/auth'
 
+export const metadata = {
+  title: "Admin Page",
+  description: "Admin description",
+};
+
 export default async function AdminPage() {
+  
   const session = await auth()
   return (
     <div className={styles.container}>

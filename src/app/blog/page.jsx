@@ -13,6 +13,11 @@ import React from 'react'
 //   return res.json()
 // }
 
+export const metadata = {
+  title: "Blog Page",
+  description: "Blog description",
+};
+
 export default async function BlogPage() {
   // const posts = await getData()
   const posts = await getPosts()
