@@ -22,12 +22,12 @@ export default function RegisterForm() {
 
     return (
         <form action={formAction} className={styles.form}>
-            <input type="text" placeholder="username" name="username" value={username} onChange={(e)=>setUsername(e.target.value)} />
-            <input type="email" placeholder="email" name="email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
-            <input type="password" placeholder="password" name="password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
-            <input type="password" placeholder="password again" name="passwordRepeat" value={passwordRepeat} onChange={(e)=>setPasswordRepeat(e.target.value)}/>
+            <input type="text" placeholder="username" name="username" value={username} onChange={(e) => setUsername(e.target.value)} />
+            <input type="email" placeholder="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input type="password" placeholder="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            <input type="password" placeholder="password again" name="passwordRepeat" value={passwordRepeat} onChange={(e) => setPasswordRepeat(e.target.value)} />
             <button>Register</button>
-            {<span style={{color: 'red'}}>{state?.error}</span>}
+            {state?.error && <span style={{ color: 'red' }}>{state?.error}</span>}
             <Link href="/login">Have an account? <b>Login</b></Link>
         </form>
     )

@@ -20,7 +20,7 @@ export default function LoginForm() {
             <input type="text" placeholder="username" name="username" />
             <input type="password" placeholder="password" name="password" />
             <button>Login</button>
-            {<span style={{ color: 'red' }}>{state?.error}</span>}
+            {state?.error && <span style={{ color: 'red' }}>{state?.error}</span>}
             <Link href="/register"> {"Have an account?"} <b>Register</b></Link>
         </form>
     )

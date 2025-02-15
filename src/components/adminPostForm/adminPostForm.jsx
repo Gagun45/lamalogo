@@ -35,8 +35,8 @@ export default function AdminPostForm({ userId }) {
       <input type='hidden' name='userId' value={userId} />
       <textarea placeholder='Description' name='desc' rows={10} value={description} onChange={(e) => setDescription(e.target.value)} />
       <button>Add</button>
-      {state &&
-        <span style={{ color: 'red' }}>{state.error}</span>}
+      {state?.error &&
+        <span style={{ color: 'red' }}>{state?.error}</span>}
     </form>
   )
 }

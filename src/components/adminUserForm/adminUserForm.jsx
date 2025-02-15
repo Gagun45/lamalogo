@@ -39,7 +39,7 @@ export default function AdminUserForm() {
         <option value="true">Yes</option>
       </select>
       <button>Add</button>
-      {state &&
+      {state?.error &&
         <span style={{ color: 'red' }}>{state.error}</span>}
     </form>
   )
