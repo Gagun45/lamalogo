@@ -22,10 +22,6 @@ export default function Links({ session }) {
             title: 'Contact',
             path: '/contact'
         },
-        {
-            title: 'Blog',
-            path: '/blog'
-        },
     ]
 
     const isAdmin = true
@@ -38,6 +34,9 @@ export default function Links({ session }) {
                     links.map(link => (
                         <NavLink item={link} key={link.title} />
                     ))
+                }
+                {
+                    session?.user && <NavLink item={{ title: "Blog", path: '/blog' }} />
                 }
                 {
                     session?.user ? (
@@ -60,7 +59,7 @@ export default function Links({ session }) {
             {open &&
                 <div className={styles.mobileLinks} >
                     {links.map(link => (
-                        <NavLink item={link} key={link.title}  />
+                        <NavLink item={link} key={link.title} />
                     ))}
                     {
                         session?.user ? (
