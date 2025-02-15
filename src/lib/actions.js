@@ -71,14 +71,15 @@ export const addUser = async (previousState, formData) => {
         return { error: 'Password length must be 6 symbols at least' }
     }
 
-
+    const salt = await bcrypt.genSalt(10)
+    const hashedPassword = await bcrypt.hash(password, salt)
 
     try {
         connectToDb()
         const newUser = new User({
             username,
             email,
-            password,
+            password: hashedPassword,
             img
         });
         await newUser.save()
