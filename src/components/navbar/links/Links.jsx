@@ -62,6 +62,9 @@ export default function Links({ session }) {
                         <NavLink item={link} key={link.title} />
                     ))}
                     {
+                        session?.user && <NavLink item={{ title: "Blog", path: '/blog' }} />
+                    }
+                    {
                         session?.user ? (
                             <>
                                 {
