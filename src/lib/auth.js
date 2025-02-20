@@ -3,7 +3,7 @@ import Github from "next-auth/providers/github"
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { connectToDb } from "./utils"
 import { User } from "./models"
-import bcrypt from 'bcrypt'
+import bcryptjs from 'bcryptjs'
 import { authConfig } from "./auth.config"
 
 
@@ -15,7 +15,7 @@ const login = async (credentials) => {
         if (!user) {
             throw new Error("Wrong credentials")
         }
-        const isPasswordCorrect = await bcrypt.compare(credentials.password, user.password)
+        const isPasswordCorrect = await bcryptjs.compare(credentials.password, user.password)
 
         if (!isPasswordCorrect) {
             throw new Error("Wrong credentials")

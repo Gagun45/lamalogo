@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache"
 import { Post, User } from "./models"
 import { connectToDb } from "./utils"
 import { signIn, signOut } from "./auth"
-import bcrypt from 'bcrypt'
+import bcryptjs from 'bcryptjs'
 import mongoose from "mongoose"
 
 export const addPost = async (previousState, formData) => {
@@ -71,8 +71,8 @@ export const addUser = async (previousState, formData) => {
         return { error: 'Password length must be 6 symbols at least' }
     }
 
-    const salt = await bcrypt.genSalt(10)
-    const hashedPassword = await bcrypt.hash(password, salt)
+    const salt = await bcryptjs.genSalt(10)
+    const hashedPassword = await bcryptjs.hash(password, salt)
 
     try {
         connectToDb()
@@ -195,8 +195,8 @@ export const register = async (previousState, formData) => {
 
         if (user) return { error: 'Username already taken' }
 
-        const salt = await bcrypt.genSalt(10)
-        const hashedPassword = await bcrypt.hash(password, salt)
+        const salt = await bcryptjs.genSalt(10)
+        const hashedPassword = await bcryptjs.hash(password, salt)
 
         const newUser = new User({
             username,
